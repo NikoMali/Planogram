@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v5.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v5.0": {
+      "Planograma.EmplUser.Domain/1.0.0": {
+        "runtime": {
+          "Planograma.EmplUser.Domain.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Planograma.EmplUser.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

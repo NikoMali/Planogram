@@ -1,0 +1,15 @@
+C:\Users\Niko\Desktop\Planogram\Planogram\Planograma.EmplUser.Application\bin\Debug\net5.0\Planograma.EmplUser.Application.deps.json
+C:\Users\Niko\Desktop\Planogram\Planogram\Planograma.EmplUser.Application\bin\Debug\net5.0\Planograma.EmplUser.Application.dll
+C:\Users\Niko\Desktop\Planogram\Planogram\Planograma.EmplUser.Application\bin\Debug\net5.0\ref\Planograma.EmplUser.Application.dll
+C:\Users\Niko\Desktop\Planogram\Planogram\Planograma.EmplUser.Application\bin\Debug\net5.0\Planograma.EmplUser.Application.pdb
+C:\Users\Niko\Desktop\Planogram\Planogram\Planograma.EmplUser.Application\bin\Debug\net5.0\Planograma.EmplUser.Domain.dll
+C:\Users\Niko\Desktop\Planogram\Planogram\Planograma.EmplUser.Application\bin\Debug\net5.0\Planograma.EmplUser.Domain.pdb
+C:\Users\Niko\Desktop\Planogram\Planogram\Planograma.EmplUser.Application\obj\Debug\net5.0\Planograma.EmplUser.Application.csprojAssemblyReference.cache
+C:\Users\Niko\Desktop\Planogram\Planogram\Planograma.EmplUser.Application\obj\Debug\net5.0\Planograma.EmplUser.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Niko\Desktop\Planogram\Planogram\Planograma.EmplUser.Application\obj\Debug\net5.0\Planograma.EmplUser.Application.AssemblyInfoInputs.cache
+C:\Users\Niko\Desktop\Planogram\Planogram\Planograma.EmplUser.Application\obj\Debug\net5.0\Planograma.EmplUser.Application.AssemblyInfo.cs
+C:\Users\Niko\Desktop\Planogram\Planogram\Planograma.EmplUser.Application\obj\Debug\net5.0\Planograma.EmplUser.Application.csproj.CoreCompileInputs.cache
+C:\Users\Niko\Desktop\Planogram\Planogram\Planograma.EmplUser.Application\obj\Debug\net5.0\Planograma.EmplUser.Application.csproj.CopyComplete
+C:\Users\Niko\Desktop\Planogram\Planogram\Planograma.EmplUser.Application\obj\Debug\net5.0\Planograma.EmplUser.Application.dll
+C:\Users\Niko\Desktop\Planogram\Planogram\Planograma.EmplUser.Application\obj\Debug\net5.0\ref\Planograma.EmplUser.Application.dll
+C:\Users\Niko\Desktop\Planogram\Planogram\Planograma.EmplUser.Application\obj\Debug\net5.0\Planograma.EmplUser.Application.pdb
