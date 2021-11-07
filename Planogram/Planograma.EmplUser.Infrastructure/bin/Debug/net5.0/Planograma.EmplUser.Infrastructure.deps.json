@@ -12,6 +12,7 @@
           "Microsoft.EntityFrameworkCore.Tools": "5.0.11",
           "Microsoft.Extensions.Configuration": "5.0.0",
           "Planograma.EmplUser.Application": "1.0.0",
+          "Planograma.EmplUser.Domain": "1.0.0",
           "Pomelo.EntityFrameworkCore.MySql": "5.0.2"
         },
         "runtime": {
@@ -305,11 +306,6 @@
         "runtime": {
           "Planograma.EmplUser.Application.dll": {}
         }
-      },
-      "Planograma.EmplUser.Domain/1.0.0": {
-        "runtime": {
-          "Planograma.EmplUser.Domain.dll": {}
-        }
       }
     }
   },
@@ -530,11 +526,6 @@
       "hashPath": "system.reflection.emit.4.7.0.nupkg.sha512"
     },
     "Planograma.EmplUser.Application/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "Planograma.EmplUser.Domain/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

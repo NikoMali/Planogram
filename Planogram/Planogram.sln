@@ -15,7 +15,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Applications", "Application
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastuctures", "Infrastuctures", "{140ACA3B-9032-434B-B0F8-B34FEFF683AA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Planograma.EmplUser.Domain", "Planograma.Employee.Domain\Planograma.EmplUser.Domain.csproj", "{3E6133BC-BF13-4C31-8BFC-4B5D45032557}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Planograma.EmplUser.Domain", "Planograma.EmplUser.Domain\Planograma.EmplUser.Domain.csproj", "{3E6133BC-BF13-4C31-8BFC-4B5D45032557}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Planograma.EmplUser.Infrastructure", "Planograma.EmplUser.Infrastructure\Planograma.EmplUser.Infrastructure.csproj", "{BA37E748-C5E9-4662-B268-3D67D44E49FE}"
 EndProject

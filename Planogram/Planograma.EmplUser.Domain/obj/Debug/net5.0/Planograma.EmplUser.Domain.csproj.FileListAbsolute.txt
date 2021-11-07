@@ -10,3 +10,15 @@ C:\Users\Niko\Desktop\Planogram\Planogram\Planograma.Employee.Domain\obj\Debug\n
 C:\Users\Niko\Desktop\Planogram\Planogram\Planograma.Employee.Domain\obj\Debug\net5.0\ref\Planograma.EmplUser.Domain.dll
 C:\Users\Niko\Desktop\Planogram\Planogram\Planograma.Employee.Domain\obj\Debug\net5.0\Planograma.EmplUser.Domain.pdb
 C:\Users\Niko\Desktop\Planogram\Planogram\Planograma.Employee.Domain\obj\Debug\net5.0\Planograma.EmplUser.Domain.csprojAssemblyReference.cache
+C:\Users\Niko\Desktop\Planogram\Planogram\Planograma.EmplUser.Domain\bin\Debug\net5.0\Planograma.EmplUser.Domain.deps.json
+C:\Users\Niko\Desktop\Planogram\Planogram\Planograma.EmplUser.Domain\bin\Debug\net5.0\Planograma.EmplUser.Domain.dll
+C:\Users\Niko\Desktop\Planogram\Planogram\Planograma.EmplUser.Domain\bin\Debug\net5.0\ref\Planograma.EmplUser.Domain.dll
+C:\Users\Niko\Desktop\Planogram\Planogram\Planograma.EmplUser.Domain\bin\Debug\net5.0\Planograma.EmplUser.Domain.pdb
+C:\Users\Niko\Desktop\Planogram\Planogram\Planograma.EmplUser.Domain\obj\Debug\net5.0\Planograma.EmplUser.Domain.csprojAssemblyReference.cache
+C:\Users\Niko\Desktop\Planogram\Planogram\Planograma.EmplUser.Domain\obj\Debug\net5.0\Planograma.EmplUser.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Niko\Desktop\Planogram\Planogram\Planograma.EmplUser.Domain\obj\Debug\net5.0\Planograma.EmplUser.Domain.AssemblyInfoInputs.cache
+C:\Users\Niko\Desktop\Planogram\Planogram\Planograma.EmplUser.Domain\obj\Debug\net5.0\Planograma.EmplUser.Domain.AssemblyInfo.cs
+C:\Users\Niko\Desktop\Planogram\Planogram\Planograma.EmplUser.Domain\obj\Debug\net5.0\Planograma.EmplUser.Domain.csproj.CoreCompileInputs.cache
+C:\Users\Niko\Desktop\Planogram\Planogram\Planograma.EmplUser.Domain\obj\Debug\net5.0\Planograma.EmplUser.Domain.dll
+C:\Users\Niko\Desktop\Planogram\Planogram\Planograma.EmplUser.Domain\obj\Debug\net5.0\ref\Planograma.EmplUser.Domain.dll
+C:\Users\Niko\Desktop\Planogram\Planogram\Planograma.EmplUser.Domain\obj\Debug\net5.0\Planograma.EmplUser.Domain.pdb

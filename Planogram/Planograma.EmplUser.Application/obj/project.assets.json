@@ -883,6 +883,9 @@
           "projectReferences": {
             "C:\\Users\\Niko\\Desktop\\Planogram\\Planogram\\Planograma.Employee.Domain\\Planograma.EmplUser.Domain.csproj": {
               "projectPath": "C:\\Users\\Niko\\Desktop\\Planogram\\Planogram\\Planograma.Employee.Domain\\Planograma.EmplUser.Domain.csproj"
+            },
+            "C:\\Users\\Niko\\Desktop\\Planogram\\Planogram\\Planograma.EmplUser.Domain\\Planograma.EmplUser.Domain.csproj": {
+              "projectPath": "C:\\Users\\Niko\\Desktop\\Planogram\\Planogram\\Planograma.EmplUser.Domain\\Planograma.EmplUser.Domain.csproj"
             }
           }
         }
