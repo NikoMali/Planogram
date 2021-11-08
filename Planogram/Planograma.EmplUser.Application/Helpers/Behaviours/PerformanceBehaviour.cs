@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.Extensions.Logging;
 using Planograma.EmplUser.Application.Interfaces;
+using Serilog;
 using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
@@ -10,17 +11,13 @@ namespace Planograma.EmplUser.Application.Helpers.Behaviours
     public class PerformanceBehaviour<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
     {
         private readonly Stopwatch _timer;
-        private readonly ILogger<TRequest> _logger;
         private readonly ICurrentUserService _currentUserService;
         
 
         public PerformanceBehaviour(
-            ILogger<TRequest> logger, 
             ICurrentUserService currentUserService)
         {
             _timer = new Stopwatch();
-
-            _logger = logger;
             _currentUserService = currentUserService;
             
         }
@@ -46,7 +43,7 @@ namespace Planograma.EmplUser.Application.Helpers.Behaviours
                     userName = "admin";
                 }
 
-                _logger.LogWarning("CleanArchitecture Long Running Request: {Name} ({ElapsedMilliseconds} milliseconds) {@UserId} {@UserName} {@Request}",
+                Log.Warning("CleanArchitecture Long Running Request: {Name} ({ElapsedMilliseconds} milliseconds) {@UserId} {@UserName} {@Request}",
                     requestName, elapsedMilliseconds, userId, userName, request);
             }
 

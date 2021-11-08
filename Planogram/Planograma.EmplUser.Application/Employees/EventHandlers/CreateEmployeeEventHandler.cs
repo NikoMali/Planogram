@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Logging;
 using Planograma.EmplUser.Application.Models;
 using Planograma.EmplUser.Domain.Events;
+using Serilog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,18 +14,18 @@ namespace Planograma.EmplUser.Application.Employees.EventHandlers
 {
     public class CreateEmployeeEventHandler : INotificationHandler<DomainEventNotification<EmployeeCreatedEvent>>
     {
-        private readonly ILogger<CreateEmployeeEventHandler> _logger;
+        
 
-        public CreateEmployeeEventHandler(ILogger<CreateEmployeeEventHandler> logger)
+        public CreateEmployeeEventHandler()
         {
-            _logger = logger;
+            
         }
 
         public Task Handle(DomainEventNotification<EmployeeCreatedEvent> notification, CancellationToken cancellationToken)
         {
             var domainEvent = notification.DomainEvent;
 
-            _logger.LogInformation("Employee Domain Event: {DomainEvent}", domainEvent.GetType().Name);
+            Log.Information("Employee Domain Event: {DomainEvent}", domainEvent.GetType().Name);
 
             return Task.CompletedTask;
         }

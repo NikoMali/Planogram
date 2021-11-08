@@ -17,7 +17,7 @@ namespace Planograma.EmplUser.Application
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(UnhandledExceptionBehaviour<,>));
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehaviour<,>));
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(PerformanceBehaviour<,>));
-            var k = Assembly.GetExecutingAssembly();
+            
             return services;
         }
     }

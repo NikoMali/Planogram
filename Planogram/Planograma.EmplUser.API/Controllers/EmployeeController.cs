@@ -4,6 +4,7 @@ using Planograma.EmplUser.Application.Employees.Commands.DeleteEmployee;
 using Planograma.EmplUser.Application.Employees.Commands.UpdateEmployee;
 using Planograma.EmplUser.Application.Employees.Queries.GetEmployee;
 using Planograma.EmplUser.Application.Employees.Queries.GetEmployees;
+using Serilog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +17,7 @@ namespace Planograma.EmplUser.API.Controllers
         [HttpGet]
         public async Task<IActionResult> GetEmployee(GetEmployeesQuery query)
         {
+            Log.Error("Test Error");
             return Ok(await Mediator.Send(query));
         }
 

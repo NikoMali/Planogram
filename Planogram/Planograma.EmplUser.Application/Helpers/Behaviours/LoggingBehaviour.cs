@@ -2,6 +2,7 @@
 using MediatR.Pipeline;
 using Microsoft.Extensions.Logging;
 using Planograma.EmplUser.Application.Interfaces;
+using Serilog;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -9,13 +10,13 @@ namespace Planograma.EmplUser.Application.Helpers.Behaviours
 {
     public class LoggingBehaviour<TRequest> : IRequestPreProcessor<TRequest>
     {
-        private readonly ILogger _logger;
+       
         private readonly ICurrentUserService _currentUserService;
         
 
-        public LoggingBehaviour(ILogger<TRequest> logger, ICurrentUserService currentUserService)
+        public LoggingBehaviour(ICurrentUserService currentUserService)
         {
-            _logger = logger;
+          
             _currentUserService = currentUserService;
             
         }
@@ -31,7 +32,7 @@ namespace Planograma.EmplUser.Application.Helpers.Behaviours
                 userName = "Admin";
             }
 
-            _logger.LogInformation("CleanArchitecture Request: {Name} {@UserId} {@UserName} {@Request}",
+            Log.Information("CleanArchitecture Request: {Name} {@UserId} {@UserName} {@Request}",
                 requestName, userId, userName, request);
         }
     }

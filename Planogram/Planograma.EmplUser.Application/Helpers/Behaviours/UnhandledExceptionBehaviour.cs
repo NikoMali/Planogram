@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using Microsoft.Extensions.Logging;
+using Serilog;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
@@ -8,11 +9,11 @@ namespace Planograma.EmplUser.Application.Helpers.Behaviours
 {
     public class UnhandledExceptionBehaviour<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
     {
-        private readonly ILogger<TRequest> _logger;
+        
 
-        public UnhandledExceptionBehaviour(ILogger<TRequest> logger)
+        public UnhandledExceptionBehaviour()
         {
-            _logger = logger;
+            
         }
 
         public async Task<TResponse> Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate<TResponse> next)
@@ -25,7 +26,7 @@ namespace Planograma.EmplUser.Application.Helpers.Behaviours
             {
                 var requestName = typeof(TRequest).Name;
 
-                _logger.LogError(ex, "CleanArchitecture Request: Unhandled Exception for Request {Name} {@Request}", requestName, request);
+                Log.Error(ex, "CleanArchitecture Request: Unhandled Exception for Request {Name} {@Request}", requestName, request);
 
                 throw;
             }
