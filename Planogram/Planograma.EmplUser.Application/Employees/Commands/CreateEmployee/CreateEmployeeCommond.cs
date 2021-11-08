@@ -19,11 +19,11 @@ namespace Planograma.EmplUser.Application.Employees.Commands.CreateEmployee
         public string password { get; set; }
     }
 
-    public class CreateTodoItemCommandHandler : IRequestHandler<CreateEmployeeCommond, int>
+    public class CreateEmployeeCommondHandler : IRequestHandler<CreateEmployeeCommond, int>
     {
         private readonly IApplicationDbContext _context;
 
-        public CreateTodoItemCommandHandler(IApplicationDbContext context)
+        public CreateEmployeeCommondHandler(IApplicationDbContext context)
         {
             _context = context;
         }

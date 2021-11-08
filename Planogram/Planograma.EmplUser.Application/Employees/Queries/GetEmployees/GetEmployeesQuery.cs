@@ -28,10 +28,7 @@ namespace Planograma.EmplUser.Application.Employees.Queries.GetEmployees
 
         public async Task<List<EmployeesResponse>> Handle(GetEmployeesQuery request, CancellationToken cancellationToken)
         {
-            var k = await _context.Employees
-                .OrderBy(x => x.Id)
-                .ProjectTo<EmployeesResponse>(_mapper.ConfigurationProvider)
-                .ToListAsync();
+           
             return await _context.Employees
                 .OrderBy(x => x.Id)
                 .ProjectTo<EmployeesResponse>(_mapper.ConfigurationProvider)

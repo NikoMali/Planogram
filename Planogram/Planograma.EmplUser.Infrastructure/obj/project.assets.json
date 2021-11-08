@@ -1116,8 +1116,8 @@
     },
     "Planograma.EmplUser.Domain/1.0.0": {
       "type": "project",
-      "path": "../Planograma.Employee.Domain/Planograma.EmplUser.Domain.csproj",
-      "msbuildProject": "../Planograma.Employee.Domain/Planograma.EmplUser.Domain.csproj"
+      "path": "../Planograma.EmplUser.Domain/Planograma.EmplUser.Domain.csproj",
+      "msbuildProject": "../Planograma.EmplUser.Domain/Planograma.EmplUser.Domain.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -1126,7 +1126,6 @@
       "Microsoft.EntityFrameworkCore.Tools >= 5.0.11",
       "Microsoft.Extensions.Configuration >= 5.0.0",
       "Planograma.EmplUser.Application >= 1.0.0",
-      "Planograma.EmplUser.Domain >= 1.0.0",
       "Pomelo.EntityFrameworkCore.MySql >= 5.0.2"
     ]
   },
@@ -1159,9 +1158,6 @@
           "projectReferences": {
             "C:\\Users\\Niko\\Desktop\\Planogram\\Planogram\\Planograma.EmplUser.Application\\Planograma.EmplUser.Application.csproj": {
               "projectPath": "C:\\Users\\Niko\\Desktop\\Planogram\\Planogram\\Planograma.EmplUser.Application\\Planograma.EmplUser.Application.csproj"
-            },
-            "C:\\Users\\Niko\\Desktop\\Planogram\\Planogram\\Planograma.EmplUser.Domain\\Planograma.EmplUser.Domain.csproj": {
-              "projectPath": "C:\\Users\\Niko\\Desktop\\Planogram\\Planogram\\Planograma.EmplUser.Domain\\Planograma.EmplUser.Domain.csproj"
             }
           }
         }

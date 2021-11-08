@@ -16,7 +16,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Planograma.EmplUser.Application\Planograma.EmplUser.Application.csproj" />
-    <ProjectReference Include="..\Planograma.EmplUser.Domain\Planograma.EmplUser.Domain.csproj" />
   </ItemGroup>
 
 </Project>
