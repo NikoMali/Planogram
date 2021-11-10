@@ -1,0 +1,15 @@
+C:\Users\Niko\Desktop\Planogram\Planogram\Planograma.Authorization.Domain\bin\Debug\net5.0\Planograma.Authorization.Domain.deps.json
+C:\Users\Niko\Desktop\Planogram\Planogram\Planograma.Authorization.Domain\bin\Debug\net5.0\Planograma.Authorization.Domain.dll
+C:\Users\Niko\Desktop\Planogram\Planogram\Planograma.Authorization.Domain\bin\Debug\net5.0\ref\Planograma.Authorization.Domain.dll
+C:\Users\Niko\Desktop\Planogram\Planogram\Planograma.Authorization.Domain\bin\Debug\net5.0\Planograma.Authorization.Domain.pdb
+C:\Users\Niko\Desktop\Planogram\Planogram\Planograma.Authorization.Domain\bin\Debug\net5.0\Planograma.EmplUser.Domain.dll
+C:\Users\Niko\Desktop\Planogram\Planogram\Planograma.Authorization.Domain\bin\Debug\net5.0\Planograma.EmplUser.Domain.pdb
+C:\Users\Niko\Desktop\Planogram\Planogram\Planograma.Authorization.Domain\obj\Debug\net5.0\Planograma.Authorization.Domain.csprojAssemblyReference.cache
+C:\Users\Niko\Desktop\Planogram\Planogram\Planograma.Authorization.Domain\obj\Debug\net5.0\Planograma.Authorization.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Niko\Desktop\Planogram\Planogram\Planograma.Authorization.Domain\obj\Debug\net5.0\Planograma.Authorization.Domain.AssemblyInfoInputs.cache
+C:\Users\Niko\Desktop\Planogram\Planogram\Planograma.Authorization.Domain\obj\Debug\net5.0\Planograma.Authorization.Domain.AssemblyInfo.cs
+C:\Users\Niko\Desktop\Planogram\Planogram\Planograma.Authorization.Domain\obj\Debug\net5.0\Planograma.Authorization.Domain.csproj.CoreCompileInputs.cache
+C:\Users\Niko\Desktop\Planogram\Planogram\Planograma.Authorization.Domain\obj\Debug\net5.0\Planograma.Authorization.Domain.csproj.CopyComplete
+C:\Users\Niko\Desktop\Planogram\Planogram\Planograma.Authorization.Domain\obj\Debug\net5.0\Planograma.Authorization.Domain.dll
+C:\Users\Niko\Desktop\Planogram\Planogram\Planograma.Authorization.Domain\obj\Debug\net5.0\ref\Planograma.Authorization.Domain.dll
+C:\Users\Niko\Desktop\Planogram\Planogram\Planograma.Authorization.Domain\obj\Debug\net5.0\Planograma.Authorization.Domain.pdb

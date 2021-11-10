@@ -1,0 +1,17 @@
+C:\Users\Niko\Desktop\Planogram\Planogram\Planograma.Authorization.Application\bin\Debug\net5.0\Planograma.Authorization.Domain.dll
+C:\Users\Niko\Desktop\Planogram\Planogram\Planograma.Authorization.Application\bin\Debug\net5.0\Planograma.EmplUser.Domain.dll
+C:\Users\Niko\Desktop\Planogram\Planogram\Planograma.Authorization.Application\bin\Debug\net5.0\Planograma.EmplUser.Domain.pdb
+C:\Users\Niko\Desktop\Planogram\Planogram\Planograma.Authorization.Application\obj\Debug\net5.0\Planograma.Authorization.Application.csprojAssemblyReference.cache
+C:\Users\Niko\Desktop\Planogram\Planogram\Planograma.Authorization.Application\obj\Debug\net5.0\Planograma.Authorization.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Niko\Desktop\Planogram\Planogram\Planograma.Authorization.Application\obj\Debug\net5.0\Planograma.Authorization.Application.AssemblyInfoInputs.cache
+C:\Users\Niko\Desktop\Planogram\Planogram\Planograma.Authorization.Application\obj\Debug\net5.0\Planograma.Authorization.Application.AssemblyInfo.cs
+C:\Users\Niko\Desktop\Planogram\Planogram\Planograma.Authorization.Application\obj\Debug\net5.0\Planograma.Authorization.Application.csproj.CoreCompileInputs.cache
+C:\Users\Niko\Desktop\Planogram\Planogram\Planograma.Authorization.Application\bin\Debug\net5.0\Planograma.Authorization.Application.deps.json
+C:\Users\Niko\Desktop\Planogram\Planogram\Planograma.Authorization.Application\bin\Debug\net5.0\Planograma.Authorization.Application.dll
+C:\Users\Niko\Desktop\Planogram\Planogram\Planograma.Authorization.Application\bin\Debug\net5.0\ref\Planograma.Authorization.Application.dll
+C:\Users\Niko\Desktop\Planogram\Planogram\Planograma.Authorization.Application\bin\Debug\net5.0\Planograma.Authorization.Application.pdb
+C:\Users\Niko\Desktop\Planogram\Planogram\Planograma.Authorization.Application\bin\Debug\net5.0\Planograma.Authorization.Domain.pdb
+C:\Users\Niko\Desktop\Planogram\Planogram\Planograma.Authorization.Application\obj\Debug\net5.0\Planograma.Authorization.Application.csproj.CopyComplete
+C:\Users\Niko\Desktop\Planogram\Planogram\Planograma.Authorization.Application\obj\Debug\net5.0\Planograma.Authorization.Application.dll
+C:\Users\Niko\Desktop\Planogram\Planogram\Planograma.Authorization.Application\obj\Debug\net5.0\ref\Planograma.Authorization.Application.dll
+C:\Users\Niko\Desktop\Planogram\Planogram\Planograma.Authorization.Application\obj\Debug\net5.0\Planograma.Authorization.Application.pdb

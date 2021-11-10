@@ -23,7 +23,7 @@ namespace Planograma.EmplUser.Infrastructure.Contexts
 
 
         public ApplicationDbContext(
-            DbContextOptions options,
+            DbContextOptions<ApplicationDbContext> options,
             ICurrentUserService currentUserService,
             IDomainEventService domainEventService,
             IConfiguration configuration,

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "bHE7CcCbS6R702ikKARb7d02mnnANZV1ZH4qMhiadqRLd3zrQ1g0PNoB1q/4o6627nq1Pws9OSzjmMqKbccFZg==",
+  "dgSpecHash": "rO92ie4oHdc2EHjrW7woa8Pr0CEQZqMl/cnDOMVETTQi2oOMFRxdkLOg9hSYbDdtmOpUA6LziPXGVjFdjCn6ww==",
   "success": true,
   "projectFilePath": "C:\\Users\\Niko\\Desktop\\Planogram\\Planogram\\Planograma.EmplUser.Application\\Planograma.EmplUser.Application.csproj",
   "expectedPackageFiles": [
@@ -12,9 +12,9 @@
     "C:\\Users\\Niko\\.nuget\\packages\\mediatr\\9.0.0\\mediatr.9.0.0.nupkg.sha512",
     "C:\\Users\\Niko\\.nuget\\packages\\mediatr.extensions.microsoft.dependencyinjection\\9.0.0\\mediatr.extensions.microsoft.dependencyinjection.9.0.0.nupkg.sha512",
     "C:\\Users\\Niko\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
-    "C:\\Users\\Niko\\.nuget\\packages\\microsoft.entityframeworkcore\\5.0.11\\microsoft.entityframeworkcore.5.0.11.nupkg.sha512",
-    "C:\\Users\\Niko\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\5.0.11\\microsoft.entityframeworkcore.abstractions.5.0.11.nupkg.sha512",
-    "C:\\Users\\Niko\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\5.0.11\\microsoft.entityframeworkcore.analyzers.5.0.11.nupkg.sha512",
+    "C:\\Users\\Niko\\.nuget\\packages\\microsoft.entityframeworkcore\\5.0.12\\microsoft.entityframeworkcore.5.0.12.nupkg.sha512",
+    "C:\\Users\\Niko\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\5.0.12\\microsoft.entityframeworkcore.abstractions.5.0.12.nupkg.sha512",
+    "C:\\Users\\Niko\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\5.0.12\\microsoft.entityframeworkcore.analyzers.5.0.12.nupkg.sha512",
     "C:\\Users\\Niko\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\5.0.0\\microsoft.extensions.caching.abstractions.5.0.0.nupkg.sha512",
     "C:\\Users\\Niko\\.nuget\\packages\\microsoft.extensions.caching.memory\\5.0.0\\microsoft.extensions.caching.memory.5.0.0.nupkg.sha512",
     "C:\\Users\\Niko\\.nuget\\packages\\microsoft.extensions.configuration\\2.0.0\\microsoft.extensions.configuration.2.0.0.nupkg.sha512",

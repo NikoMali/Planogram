@@ -1,11 +1,18 @@
 using FluentValidation.AspNetCore;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using Planograma.Authorization.Application;
+using Planograma.Authorization.Application.Authorization;
+using Planograma.Authorization.Application.Helpers;
+using Planograma.Authorization.Application.Services;
+using Planograma.Authorization.Infrastructure;
 using Planograma.EmplUser.API.Filters;
 using Planograma.EmplUser.API.Services;
 using Planograma.EmplUser.Application;
@@ -15,12 +22,14 @@ using Planograma.EmplUser.Infrastructure.Contexts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace Planograma.EmplUser.API
 {
     public class Startup
     {
+        private AppSettings settings;
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -32,7 +41,9 @@ namespace Planograma.EmplUser.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddApplication();
+            services.AddAuthApplication();
             services.AddInfrastructure(Configuration);
+            services.AddAuthInfrastructure(Configuration);
             services.AddSingleton<ICurrentUserService, CurrentUserService>();
 
             services.AddHttpContextAccessor();
@@ -43,8 +54,45 @@ namespace Planograma.EmplUser.API
                 options.Filters.Add<ApiExceptionFilterAttribute>())
                     .AddFluentValidation(x => x.AutomaticValidationEnabled = false);
 
-            //swagger
-            services.AddSwaggerGen(c =>
+            services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
+            settings = Configuration.GetSection("AppSettings").Get<AppSettings>();
+
+            services.AddAuthentication(x =>
+            {
+                x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+            .AddJwtBearer(x =>
+            {
+                x.Events = new JwtBearerEvents
+                {
+                    OnTokenValidated = context =>
+                    {
+                        var userService = context.HttpContext.RequestServices.GetRequiredService<IUserService>();
+                        var userId = int.Parse(context.Principal.Identity.Name);
+                        var user = userService.GetById(userId);
+                        if (user == null)
+                        {
+                            // return unauthorized if user no longer exists
+                            context.Fail("Unauthorized");
+                        }
+                        return Task.CompletedTask;
+                    }
+                };
+                x.RequireHttpsMetadata = false;
+                x.SaveToken = true;
+                x.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(settings.Secret)),
+                    ValidateIssuer = false,
+                    ValidateAudience = false
+                };
+            });
+        
+
+        //swagger
+        services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo
                 {
@@ -89,8 +137,19 @@ namespace Planograma.EmplUser.API
             }
             app.UseHealthChecks("/health");
             app.UseStaticFiles();
-            
             app.UseRouting();
+            app.UseAuthentication();
+            app.UseAuthorization();
+
+            /*// global cors policy
+            app.UseCors(x => x
+                .SetIsOriginAllowed(origin => true)
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+                .AllowCredentials());*/
+
+            // custom jwt auth middleware
+            app.UseMiddleware<JwtMiddleware>();
 
             app.UseEndpoints(endpoints =>
             {

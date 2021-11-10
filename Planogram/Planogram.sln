@@ -15,18 +15,24 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Applications", "Application
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastuctures", "Infrastuctures", "{140ACA3B-9032-434B-B0F8-B34FEFF683AA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Planograma.EmplUser.Domain", "Planograma.EmplUser.Domain\Planograma.EmplUser.Domain.csproj", "{3E6133BC-BF13-4C31-8BFC-4B5D45032557}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Planograma.EmplUser.Domain", "Planograma.EmplUser.Domain\Planograma.EmplUser.Domain.csproj", "{3E6133BC-BF13-4C31-8BFC-4B5D45032557}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Planograma.EmplUser.Infrastructure", "Planograma.EmplUser.Infrastructure\Planograma.EmplUser.Infrastructure.csproj", "{BA37E748-C5E9-4662-B268-3D67D44E49FE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Planograma.EmplUser.Infrastructure", "Planograma.EmplUser.Infrastructure\Planograma.EmplUser.Infrastructure.csproj", "{BA37E748-C5E9-4662-B268-3D67D44E49FE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Planograma.EmplUser.Application", "Planograma.EmplUser.Application\Planograma.EmplUser.Application.csproj", "{8D3ED791-E8DE-4257-AC39-5E21E2920064}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Planograma.EmplUser.Application", "Planograma.EmplUser.Application\Planograma.EmplUser.Application.csproj", "{8D3ED791-E8DE-4257-AC39-5E21E2920064}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Planograma.EmplUser.API", "Planograma.EmplUser.API\Planograma.EmplUser.API.csproj", "{EEE0EB30-3ADC-46F2-A6E7-61A94B123F18}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Planograma.EmplUser.API", "Planograma.EmplUser.API\Planograma.EmplUser.API.csproj", "{EEE0EB30-3ADC-46F2-A6E7-61A94B123F18}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{3EDE1158-5078-4041-A6CD-05411EE71D51}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Planograma.Authorization.Domain", "Planograma.Authorization.Domain\Planograma.Authorization.Domain.csproj", "{D12988F6-E589-438A-8FC3-AEB97F5416A1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Planograma.Authorization.Application", "Planograma.Authorization.Application\Planograma.Authorization.Application.csproj", "{B00A8912-2113-4400-AFB9-039CA037324F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Planograma.Authorization.Infrastructure", "Planograma.Authorization.Infrastructure\Planograma.Authorization.Infrastructure.csproj", "{167C00EC-688F-44F4-A78F-4819D24197D2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -50,6 +56,18 @@ Global
 		{EEE0EB30-3ADC-46F2-A6E7-61A94B123F18}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EEE0EB30-3ADC-46F2-A6E7-61A94B123F18}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EEE0EB30-3ADC-46F2-A6E7-61A94B123F18}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D12988F6-E589-438A-8FC3-AEB97F5416A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D12988F6-E589-438A-8FC3-AEB97F5416A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D12988F6-E589-438A-8FC3-AEB97F5416A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D12988F6-E589-438A-8FC3-AEB97F5416A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B00A8912-2113-4400-AFB9-039CA037324F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B00A8912-2113-4400-AFB9-039CA037324F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B00A8912-2113-4400-AFB9-039CA037324F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B00A8912-2113-4400-AFB9-039CA037324F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{167C00EC-688F-44F4-A78F-4819D24197D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{167C00EC-688F-44F4-A78F-4819D24197D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{167C00EC-688F-44F4-A78F-4819D24197D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{167C00EC-688F-44F4-A78F-4819D24197D2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -63,6 +81,9 @@ Global
 		{BA37E748-C5E9-4662-B268-3D67D44E49FE} = {140ACA3B-9032-434B-B0F8-B34FEFF683AA}
 		{8D3ED791-E8DE-4257-AC39-5E21E2920064} = {388AD908-7272-4F20-8197-7CD4ED4CF0F1}
 		{EEE0EB30-3ADC-46F2-A6E7-61A94B123F18} = {4FD826A2-715C-40EF-A7DF-CE69ADB1AD54}
+		{D12988F6-E589-438A-8FC3-AEB97F5416A1} = {13CE39AF-BDF7-4E4D-9977-3619BBE3AC2C}
+		{B00A8912-2113-4400-AFB9-039CA037324F} = {388AD908-7272-4F20-8197-7CD4ED4CF0F1}
+		{167C00EC-688F-44F4-A78F-4819D24197D2} = {140ACA3B-9032-434B-B0F8-B34FEFF683AA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {25CB1608-93E2-49D6-998A-048FFA5A1BFD}
