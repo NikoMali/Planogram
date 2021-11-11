@@ -14,7 +14,8 @@ using System.Threading.Tasks;
 
 namespace Planograma.EmplUser.API.Controllers
 {
-    [Authorize]
+    //[Authorize]
+    [Authorize(Policy = "RoleWithPermissions")]
     public class EmployeeController : ApiControllerBase
     {
         private IUserService _userService;
@@ -25,33 +26,13 @@ namespace Planograma.EmplUser.API.Controllers
         }
         [AllowAnonymous]
         [HttpPost("authenticate")]
-        public IActionResult Authenticate(AuthenticateRequest model)
+        public async Task<IActionResult> Authenticate(AuthenticateRequest model)
         {
-            var response = _userService.Authenticate(model, ipAddress());
+            var response =await _userService.Authenticate(model, ipAddress());
             setTokenCookie(response.RefreshToken);
             return Ok(response);
         }
-        // helper methods
-
-        private void setTokenCookie(string token)
-        {
-            // append cookie with refresh token to the http response
-            var cookieOptions = new CookieOptions
-            {
-                HttpOnly = true,
-                Expires = DateTime.UtcNow.AddDays(7)
-            };
-            Response.Cookies.Append("refreshToken", token, cookieOptions);
-        }
-
-        private string ipAddress()
-        {
-            // get source ip address for the current request
-            if (Request.Headers.ContainsKey("X-Forwarded-For"))
-                return Request.Headers["X-Forwarded-For"];
-            else
-                return HttpContext.Connection.RemoteIpAddress.MapToIPv4().ToString();
-        }
+        
 
         [HttpGet]
         public async Task<IActionResult> GetEmployee([FromQuery] GetEmployeesQuery query)
@@ -65,7 +46,7 @@ namespace Planograma.EmplUser.API.Controllers
         {
             return Ok(await Mediator.Send(new GetEmployeeQuery { Id = id }));
         }
-
+        [AllowAnonymous]
         [HttpPost]
         public async Task<ActionResult<int>> Create(CreateEmployeeCommond command)
         {
@@ -90,6 +71,37 @@ namespace Planograma.EmplUser.API.Controllers
             await Mediator.Send(command);
 
             return NoContent();
+        }
+
+
+
+
+
+
+
+
+
+
+        // helper methods
+
+        private void setTokenCookie(string token)
+        {
+            // append cookie with refresh token to the http response
+            var cookieOptions = new CookieOptions
+            {
+                HttpOnly = true,
+                Expires = DateTime.UtcNow.AddDays(7)
+            };
+            Response.Cookies.Append("refreshToken", token, cookieOptions);
+        }
+
+        private string ipAddress()
+        {
+            // get source ip address for the current request
+            if (Request.Headers.ContainsKey("X-Forwarded-For"))
+                return Request.Headers["X-Forwarded-For"];
+            else
+                return HttpContext.Connection.RemoteIpAddress.MapToIPv4().ToString();
         }
     }
 }

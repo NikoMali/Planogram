@@ -12,7 +12,6 @@ using Planograma.Authorization.Application;
 using Planograma.Authorization.Application.Authorization;
 using Planograma.Authorization.Application.Helpers;
 using Planograma.Authorization.Application.Services;
-using Planograma.Authorization.Infrastructure;
 using Planograma.EmplUser.API.Filters;
 using Planograma.EmplUser.API.Services;
 using Planograma.EmplUser.Application;
@@ -43,7 +42,6 @@ namespace Planograma.EmplUser.API
             services.AddApplication();
             services.AddAuthApplication();
             services.AddInfrastructure(Configuration);
-            services.AddAuthInfrastructure(Configuration);
             services.AddSingleton<ICurrentUserService, CurrentUserService>();
 
             services.AddHttpContextAccessor();
@@ -57,6 +55,15 @@ namespace Planograma.EmplUser.API
             services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
             settings = Configuration.GetSection("AppSettings").Get<AppSettings>();
 
+
+            //auth
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("RoleWithPermissions",
+                  policy => policy
+                    .Requirements
+                    .Add(new RoleRequirement()));
+            });
             services.AddAuthentication(x =>
             {
                 x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -149,7 +156,6 @@ namespace Planograma.EmplUser.API
                 .AllowCredentials());*/
 
             // custom jwt auth middleware
-            app.UseMiddleware<JwtMiddleware>();
 
             app.UseEndpoints(endpoints =>
             {
@@ -164,6 +170,7 @@ namespace Planograma.EmplUser.API
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
             });
+            app.UseMiddleware<JwtMiddleware>();
         }
     }
 }

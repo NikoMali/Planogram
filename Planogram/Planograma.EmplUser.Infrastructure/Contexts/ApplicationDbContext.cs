@@ -11,10 +11,12 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
+using Planograma.Authorization.Application.Interfaces;
+using Planograma.Authorization.Domain.Entities;
 
 namespace Planograma.EmplUser.Infrastructure.Contexts
 {
-    public class ApplicationDbContext : DbContext, IApplicationDbContext
+    public class ApplicationDbContext : DbContext, IApplicationDbContext,IApplicationAuthDbContext
     {
         private readonly ICurrentUserService _currentUserService;
         private readonly IDateTime _dateTime;
@@ -36,6 +38,16 @@ namespace Planograma.EmplUser.Infrastructure.Contexts
        
 
         public DbSet<Employee> Employees { get; set; }
+        public DbSet<EmployeeParams> EmployeeParams { get; set; }
+        public DbSet<EmployeeRole> EmployeeRoles { get; set; }
+        public DbSet<Role> Roles { get; set; }
+
+#pragma warning disable CS0114 // Member hides inherited member; missing override keyword
+        public void SaveChanges()
+#pragma warning restore CS0114 // Member hides inherited member; missing override keyword
+        {
+            base.SaveChanges();
+        }
 
 
         public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())

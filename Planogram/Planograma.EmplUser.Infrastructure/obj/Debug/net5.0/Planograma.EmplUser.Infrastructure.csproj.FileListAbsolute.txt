@@ -18,3 +18,7 @@ C:\Users\Niko\Desktop\Planogram\Planogram\Planograma.EmplUser.Infrastructure\obj
 C:\Users\Niko\Desktop\Planogram\Planogram\Planograma.EmplUser.Infrastructure\bin\Debug\net5.0\Planograma.EmplUser.Infrastructure.runtimeconfig.json
 C:\Users\Niko\Desktop\Planogram\Planogram\Planograma.EmplUser.Infrastructure\bin\Debug\net5.0\Planograma.EmplUser.Infrastructure.runtimeconfig.dev.json
 C:\Users\Niko\Desktop\Planogram\Planogram\Planograma.EmplUser.Infrastructure\obj\Debug\net5.0\Planograma.EmplUser.Infrastructure.genruntimeconfig.cache
+C:\Users\Niko\Desktop\Planogram\Planogram\Planograma.EmplUser.Infrastructure\bin\Debug\net5.0\Planograma.Authorization.Application.dll
+C:\Users\Niko\Desktop\Planogram\Planogram\Planograma.EmplUser.Infrastructure\bin\Debug\net5.0\Planograma.Authorization.Domain.dll
+C:\Users\Niko\Desktop\Planogram\Planogram\Planograma.EmplUser.Infrastructure\bin\Debug\net5.0\Planograma.Authorization.Application.pdb
+C:\Users\Niko\Desktop\Planogram\Planogram\Planograma.EmplUser.Infrastructure\bin\Debug\net5.0\Planograma.Authorization.Domain.pdb

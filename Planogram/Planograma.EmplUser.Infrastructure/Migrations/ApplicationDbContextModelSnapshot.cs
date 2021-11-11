@@ -15,13 +15,70 @@ namespace Planograma.EmplUser.Infrastructure.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("Relational:MaxIdentifierLength", 64)
-                .HasAnnotation("ProductVersion", "5.0.11");
+                .HasAnnotation("ProductVersion", "5.0.12");
+
+            modelBuilder.Entity("Planograma.Authorization.Domain.Entities.EmployeeParams", b =>
+                {
+                    b.Property<int>("EmployeeId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("PasswordHash")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Username")
+                        .HasColumnType("longtext");
+
+                    b.HasKey("EmployeeId");
+
+                    b.ToTable("EmployeeParams");
+                });
+
+            modelBuilder.Entity("Planograma.Authorization.Domain.Entities.EmployeeRole", b =>
+                {
+                    b.Property<int>("EmployeeId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("OtherPermissions")
+                        .HasColumnType("longtext");
+
+                    b.Property<int>("RoleId")
+                        .HasColumnType("int");
+
+                    b.HasKey("EmployeeId");
+
+                    b.HasIndex("RoleId");
+
+                    b.ToTable("EmployeeRoles");
+                });
+
+            modelBuilder.Entity("Planograma.Authorization.Domain.Entities.Role", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Permissions")
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Roles");
+                });
 
             modelBuilder.Entity("Planograma.EmplUser.Domain.Entities.Employee", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    b.Property<string>("Avatar")
+                        .HasColumnType("longtext");
 
                     b.Property<DateTime>("Created")
                         .HasColumnType("datetime(6)");
@@ -31,6 +88,9 @@ namespace Planograma.EmplUser.Infrastructure.Migrations
 
                     b.Property<bool>("Done")
                         .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("longtext");
 
                     b.Property<string>("FirstName")
                         .HasColumnType("longtext");
@@ -44,18 +104,47 @@ namespace Planograma.EmplUser.Infrastructure.Migrations
                     b.Property<string>("LastName")
                         .HasColumnType("longtext");
 
-                    b.Property<string>("PasswordHash")
-                        .HasColumnType("longtext");
-
-                    b.Property<int>("Role")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Username")
+                    b.Property<string>("MobileNumber")
                         .HasColumnType("longtext");
 
                     b.HasKey("Id");
 
                     b.ToTable("Employees");
+                });
+
+            modelBuilder.Entity("Planograma.Authorization.Domain.Entities.EmployeeParams", b =>
+                {
+                    b.HasOne("Planograma.EmplUser.Domain.Entities.Employee", "Employee")
+                        .WithMany()
+                        .HasForeignKey("EmployeeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Employee");
+                });
+
+            modelBuilder.Entity("Planograma.Authorization.Domain.Entities.EmployeeRole", b =>
+                {
+                    b.HasOne("Planograma.EmplUser.Domain.Entities.Employee", "Employee")
+                        .WithMany()
+                        .HasForeignKey("EmployeeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Planograma.Authorization.Domain.Entities.Role", "Roles")
+                        .WithMany("EmployeeRoles")
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Employee");
+
+                    b.Navigation("Roles");
+                });
+
+            modelBuilder.Entity("Planograma.Authorization.Domain.Entities.Role", b =>
+                {
+                    b.Navigation("EmployeeRoles");
                 });
 #pragma warning restore 612, 618
         }

@@ -14,18 +14,12 @@
     </PackageReference>
     <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore" Version="5.0.12" />
     <PackageReference Include="Microsoft.OpenApi" Version="1.2.3" />
-    <PackageReference Include="NSwag.MSBuild" Version="13.13.2">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
     <PackageReference Include="Numind.AspNetCore.SpaServices.Extensions" Version="1.0.1" />
     <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="6.2.3" />
     <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="6.2.3" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Planograma.Authorization.Application\Planograma.Authorization.Application.csproj" />
-    <ProjectReference Include="..\Planograma.Authorization.Infrastructure\Planograma.Authorization.Infrastructure.csproj" />
     <ProjectReference Include="..\Planograma.EmplUser.Application\Planograma.EmplUser.Application.csproj" />
     <ProjectReference Include="..\Planograma.EmplUser.Infrastructure\Planograma.EmplUser.Infrastructure.csproj" />
   </ItemGroup>

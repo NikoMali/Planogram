@@ -22,12 +22,9 @@ namespace Planograma.Authorization.Application.Authorization
         public async Task Invoke(HttpContext context, IUserService userService, IJwtUtils jwtUtils)
         {
             var token = context.Request.Headers["Authorization"].FirstOrDefault()?.Split(" ").Last();
-            var userId = jwtUtils.ValidateJwtToken(token);
-            if (userId != null)
-            {
-                // attach user to context on successful jwt validation
-                context.Items["User"] = userService.GetById(userId.Value);
-            }
+            var userId = await jwtUtils.ValidateJwtToken(token);
+            context.Items["User"] = await userService.GetById(userId);
+            
 
             await _next(context);
         }

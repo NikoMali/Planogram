@@ -148,77 +148,6 @@
         }
       }
     },
-    "C:\\Users\\Niko\\Desktop\\Planogram\\Planogram\\Planograma.Authorization.Infrastructure\\Planograma.Authorization.Infrastructure.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "C:\\Users\\Niko\\Desktop\\Planogram\\Planogram\\Planograma.Authorization.Infrastructure\\Planograma.Authorization.Infrastructure.csproj",
-        "projectName": "Planograma.Authorization.Infrastructure",
-        "projectPath": "C:\\Users\\Niko\\Desktop\\Planogram\\Planogram\\Planograma.Authorization.Infrastructure\\Planograma.Authorization.Infrastructure.csproj",
-        "packagesPath": "C:\\Users\\Niko\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Niko\\Desktop\\Planogram\\Planogram\\Planograma.Authorization.Infrastructure\\obj\\",
-        "projectStyle": "PackageReference",
-        "configFilePaths": [
-          "C:\\Users\\Niko\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
-        ],
-        "originalTargetFrameworks": [
-          "net5.0"
-        ],
-        "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
-        },
-        "frameworks": {
-          "net5.0": {
-            "targetAlias": "net5.0",
-            "projectReferences": {
-              "C:\\Users\\Niko\\Desktop\\Planogram\\Planogram\\Planograma.Authorization.Application\\Planograma.Authorization.Application.csproj": {
-                "projectPath": "C:\\Users\\Niko\\Desktop\\Planogram\\Planogram\\Planograma.Authorization.Application\\Planograma.Authorization.Application.csproj"
-              },
-              "C:\\Users\\Niko\\Desktop\\Planogram\\Planogram\\Planograma.Authorization.Domain\\Planograma.Authorization.Domain.csproj": {
-                "projectPath": "C:\\Users\\Niko\\Desktop\\Planogram\\Planogram\\Planograma.Authorization.Domain\\Planograma.Authorization.Domain.csproj"
-              }
-            }
-          }
-        },
-        "warningProperties": {
-          "warnAsError": [
-            "NU1605"
-          ]
-        }
-      },
-      "frameworks": {
-        "net5.0": {
-          "targetAlias": "net5.0",
-          "dependencies": {
-            "Microsoft.Extensions.Configuration.Abstractions": {
-              "target": "Package",
-              "version": "[6.0.0, )"
-            },
-            "Pomelo.EntityFrameworkCore.MySql": {
-              "target": "Package",
-              "version": "[5.0.2, )"
-            }
-          },
-          "imports": [
-            "net461",
-            "net462",
-            "net47",
-            "net471",
-            "net472",
-            "net48"
-          ],
-          "assetTargetFallback": true,
-          "warn": true,
-          "frameworkReferences": {
-            "Microsoft.NETCore.App": {
-              "privateAssets": "all"
-            }
-          },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.402\\RuntimeIdentifierGraph.json"
-        }
-      }
-    },
     "C:\\Users\\Niko\\Desktop\\Planogram\\Planogram\\Planograma.EmplUser.API\\Planograma.EmplUser.API.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -243,12 +172,6 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\Niko\\Desktop\\Planogram\\Planogram\\Planograma.Authorization.Application\\Planograma.Authorization.Application.csproj": {
-                "projectPath": "C:\\Users\\Niko\\Desktop\\Planogram\\Planogram\\Planograma.Authorization.Application\\Planograma.Authorization.Application.csproj"
-              },
-              "C:\\Users\\Niko\\Desktop\\Planogram\\Planogram\\Planograma.Authorization.Infrastructure\\Planograma.Authorization.Infrastructure.csproj": {
-                "projectPath": "C:\\Users\\Niko\\Desktop\\Planogram\\Planogram\\Planograma.Authorization.Infrastructure\\Planograma.Authorization.Infrastructure.csproj"
-              },
               "C:\\Users\\Niko\\Desktop\\Planogram\\Planogram\\Planograma.EmplUser.Application\\Planograma.EmplUser.Application.csproj": {
                 "projectPath": "C:\\Users\\Niko\\Desktop\\Planogram\\Planogram\\Planograma.EmplUser.Application\\Planograma.EmplUser.Application.csproj"
               },
@@ -289,12 +212,6 @@
             "Microsoft.OpenApi": {
               "target": "Package",
               "version": "[1.2.3, )"
-            },
-            "NSwag.MSBuild": {
-              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
-              "suppressParent": "All",
-              "target": "Package",
-              "version": "[13.13.2, )"
             },
             "Numind.AspNetCore.SpaServices.Extensions": {
               "target": "Package",
@@ -355,6 +272,12 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
+              "C:\\Users\\Niko\\Desktop\\Planogram\\Planogram\\Planograma.Authorization.Application\\Planograma.Authorization.Application.csproj": {
+                "projectPath": "C:\\Users\\Niko\\Desktop\\Planogram\\Planogram\\Planograma.Authorization.Application\\Planograma.Authorization.Application.csproj"
+              },
+              "C:\\Users\\Niko\\Desktop\\Planogram\\Planogram\\Planograma.Authorization.Domain\\Planograma.Authorization.Domain.csproj": {
+                "projectPath": "C:\\Users\\Niko\\Desktop\\Planogram\\Planogram\\Planograma.Authorization.Domain\\Planograma.Authorization.Domain.csproj"
+              },
               "C:\\Users\\Niko\\Desktop\\Planogram\\Planogram\\Planograma.EmplUser.Domain\\Planograma.EmplUser.Domain.csproj": {
                 "projectPath": "C:\\Users\\Niko\\Desktop\\Planogram\\Planogram\\Planograma.EmplUser.Domain\\Planograma.EmplUser.Domain.csproj"
               }
@@ -512,6 +435,9 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
+              "C:\\Users\\Niko\\Desktop\\Planogram\\Planogram\\Planograma.Authorization.Application\\Planograma.Authorization.Application.csproj": {
+                "projectPath": "C:\\Users\\Niko\\Desktop\\Planogram\\Planogram\\Planograma.Authorization.Application\\Planograma.Authorization.Application.csproj"
+              },
               "C:\\Users\\Niko\\Desktop\\Planogram\\Planogram\\Planograma.EmplUser.Application\\Planograma.EmplUser.Application.csproj": {
                 "projectPath": "C:\\Users\\Niko\\Desktop\\Planogram\\Planogram\\Planograma.EmplUser.Application\\Planograma.EmplUser.Application.csproj"
               }

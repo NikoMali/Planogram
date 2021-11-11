@@ -13,3 +13,7 @@ C:\Users\Niko\Desktop\Planogram\Planogram\Planograma.EmplUser.Application\obj\De
 C:\Users\Niko\Desktop\Planogram\Planogram\Planograma.EmplUser.Application\obj\Debug\net5.0\Planograma.EmplUser.Application.dll
 C:\Users\Niko\Desktop\Planogram\Planogram\Planograma.EmplUser.Application\obj\Debug\net5.0\ref\Planograma.EmplUser.Application.dll
 C:\Users\Niko\Desktop\Planogram\Planogram\Planograma.EmplUser.Application\obj\Debug\net5.0\Planograma.EmplUser.Application.pdb
+C:\Users\Niko\Desktop\Planogram\Planogram\Planograma.EmplUser.Application\bin\Debug\net5.0\Planograma.Authorization.Domain.dll
+C:\Users\Niko\Desktop\Planogram\Planogram\Planograma.EmplUser.Application\bin\Debug\net5.0\Planograma.Authorization.Domain.pdb
+C:\Users\Niko\Desktop\Planogram\Planogram\Planograma.EmplUser.Application\bin\Debug\net5.0\Planograma.Authorization.Application.dll
+C:\Users\Niko\Desktop\Planogram\Planogram\Planograma.EmplUser.Application\bin\Debug\net5.0\Planograma.Authorization.Application.pdb

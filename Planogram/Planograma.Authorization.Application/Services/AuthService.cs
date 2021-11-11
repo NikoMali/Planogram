@@ -7,27 +7,31 @@ using Planograma.Authorization.Application.Models.Users;
 using Planograma.Authorization.Application.Authorization;
 using Planograma.Authorization.Application.Helpers;
 using Planograma.Authorization.Domain.Entities;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using Planograma.EmplUser.Application.Models.Users;
 using Planograma.Authorization.Application.Interfaces;
 
 namespace Planograma.Authorization.Application.Services
 {
     public interface IUserService
     {
-        AuthenticateResponse Authenticate(AuthenticateRequest model, string ipAddress);
-        AuthenticateResponse RefreshToken(string token, string ipAddress);
+        Task<AuthenticateResponse >Authenticate(AuthenticateRequest model, string ipAddress);
+        Task<AuthenticateResponse> RefreshToken(string token, string ipAddress);
         void RevokeToken(string token, string ipAddress);
-        IEnumerable<EmployeeParams> GetAll();
-        EmployeeParams GetById(int id);
+        Task<IEnumerable<EmployeeParams>> GetAll();
+        Task<EmployeeParams> GetById(int id);
+        string CreatePasswordHash(string password);
     }
 
     public class AuthService : IUserService
     {
-        private IApplicationDbContext _context;
+        private IApplicationAuthDbContext _context;
         private IJwtUtils _jwtUtils;
         private readonly AppSettings _appSettings;
 
         public AuthService(
-            IApplicationDbContext context,
+            IApplicationAuthDbContext context,
             IJwtUtils jwtUtils,
             IOptions<AppSettings> appSettings)
         {
@@ -36,33 +40,33 @@ namespace Planograma.Authorization.Application.Services
             _appSettings = appSettings.Value;
         }
 
-        public AuthenticateResponse Authenticate(AuthenticateRequest model, string ipAddress)
+        public async Task<AuthenticateResponse> Authenticate(AuthenticateRequest model, string ipAddress)
         {
-            //var user = _context.EmployeeParams.SingleOrDefault(x => x.Employee.Username == model.Username);
+            var user = await _context.EmployeeParams.SingleOrDefaultAsync(x => x.Username == model.Username);
 
-            /* // validate
+             
              if (user == null || !BCryptNet.Verify(model.Password, user.PasswordHash))
-                 throw new AppException("Username or password is incorrect");*/
+                 throw new AppException("Username or password is incorrect");
 
-            // authentication successful so generate jwt and refresh tokens
-            var user = new EmployeeParams() { EmployeeId = 1 };
-            var jwtToken = _jwtUtils.GenerateJwtToken(user);
-            var refreshToken = _jwtUtils.GenerateRefreshToken(ipAddress);
-           /* user.RefreshTokens.Add(refreshToken);
+           
+            
+            var jwtToken =await _jwtUtils.GenerateJwtToken(user.EmployeeId);
+            var refreshToken = await _jwtUtils.GenerateRefreshToken(ipAddress);
+            user.addRefreshTokens(refreshToken);
 
-            // remove old refresh tokens from user
+            
             removeOldRefreshTokens(user);
 
-            // save changes to db
+           
             _context.EmployeeParams.Update(user);
-            _context.SaveChanges();*/
+            _context.SaveChanges();
 
             return new AuthenticateResponse(user.EmployeeId, jwtToken, refreshToken.Token);
         }
 
-        public AuthenticateResponse RefreshToken(string token, string ipAddress)
+        public async Task<AuthenticateResponse> RefreshToken(string token, string ipAddress)
         {
-            var user = getUserByRefreshToken(token);
+            var user =await getUserByRefreshToken(token);
             var refreshToken = user.RefreshTokens.Single(x => x.Token == token);
 
             if (refreshToken.IsRevoked)
@@ -77,7 +81,7 @@ namespace Planograma.Authorization.Application.Services
                 throw new AppException("Invalid token");
 
             // replace old refresh token with a new one (rotate token)
-            var newRefreshToken = rotateRefreshToken(refreshToken, ipAddress);
+            var newRefreshToken =await rotateRefreshToken(refreshToken, ipAddress);
             user.RefreshTokens.Add(newRefreshToken);
 
             // remove old refresh tokens from user
@@ -88,14 +92,14 @@ namespace Planograma.Authorization.Application.Services
             _context.SaveChanges();
 
             // generate new jwt
-            var jwtToken = _jwtUtils.GenerateJwtToken(user);
+            var jwtToken =await _jwtUtils.GenerateJwtToken(user.EmployeeId);
 
             return new AuthenticateResponse(user.EmployeeId, jwtToken, newRefreshToken.Token);
         }
 
-        public void RevokeToken(string token, string ipAddress)
+        public async void RevokeToken(string token, string ipAddress)
         {
-            var user = getUserByRefreshToken(token);
+            var user = await getUserByRefreshToken(token);
             var refreshToken = user.RefreshTokens.Single(x => x.Token == token);
 
             if (!refreshToken.IsActive)
@@ -107,23 +111,23 @@ namespace Planograma.Authorization.Application.Services
             _context.SaveChanges();
         }
 
-        public IEnumerable<EmployeeParams> GetAll()
+        public async Task<IEnumerable<EmployeeParams>> GetAll()
         {
-            return _context.EmployeeParams;
+            return await _context.EmployeeParams.ToListAsync();
         }
 
-        public EmployeeParams GetById(int id)
+        public async Task<EmployeeParams> GetById(int id)
         {
-            var user = _context.EmployeeParams.Find(id);
+            var user = await _context.EmployeeParams.FindAsync(id);
             if (user == null) throw new KeyNotFoundException("User not found");
             return user;
         }
 
-        // helper methods
+        
 
-        private EmployeeParams getUserByRefreshToken(string token)
+        private async Task<EmployeeParams> getUserByRefreshToken(string token)
         {
-            var user = _context.EmployeeParams.SingleOrDefault(u => u.RefreshTokens.Any(t => t.Token == token));
+            var user =await _context.EmployeeParams.SingleOrDefaultAsync(u => u.RefreshTokens.Any(t => t.Token == token));
 
             if (user == null)
                 throw new AppException("Invalid token");
@@ -131,9 +135,9 @@ namespace Planograma.Authorization.Application.Services
             return user;
         }
 
-        private RefreshToken rotateRefreshToken(RefreshToken refreshToken, string ipAddress)
+        private async Task<RefreshToken> rotateRefreshToken(RefreshToken refreshToken, string ipAddress)
         {
-            var newRefreshToken = _jwtUtils.GenerateRefreshToken(ipAddress);
+            var newRefreshToken =await _jwtUtils.GenerateRefreshToken(ipAddress);
             revokeRefreshToken(refreshToken, ipAddress, "Replaced by new token", newRefreshToken.Token);
             return newRefreshToken;
         }
@@ -165,6 +169,17 @@ namespace Planograma.Authorization.Application.Services
             token.RevokedByIp = ipAddress;
             token.ReasonRevoked = reason;
             token.ReplacedByToken = replacedByToken;
+        }
+
+        public string CreatePasswordHash(string password)
+        {
+            if (password == null) throw new ArgumentNullException("password");
+            if (string.IsNullOrWhiteSpace(password)) throw new ArgumentException("Value cannot be empty or whitespace only string.", "password");
+            return  BCryptNet.HashPassword(password);
+            /*using (var hmac = new System.Security.Cryptography.HMACSHA512())
+            {
+                passwordHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
+            }*/
         }
     }
 }

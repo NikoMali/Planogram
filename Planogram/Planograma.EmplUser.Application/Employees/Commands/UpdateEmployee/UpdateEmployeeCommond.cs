@@ -52,8 +52,8 @@ namespace Planograma.EmplUser.Application.Employees.Commands.UpdateEmployee
 
             entity.FirstName = request.FirstName;
             entity.LastName = request.LastName;
-            entity.Username = request.Username;
-            entity.PasswordHash = request.password;
+            
+            
             
 
             await _context.SaveChangesAsync(cancellationToken);

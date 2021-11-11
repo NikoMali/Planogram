@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Planograma.Authorization.Application.Interfaces;
 using Planograma.EmplUser.Application.Interfaces;
 using Planograma.EmplUser.Infrastructure.Contexts;
 using Planograma.EmplUser.Infrastructure.Services;
@@ -25,6 +26,7 @@ namespace Planograma.EmplUser.Infrastructure
                         b => b.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)));
 
             services.AddScoped<IApplicationDbContext>(provider => provider.GetService<ApplicationDbContext>());
+            services.AddScoped<IApplicationAuthDbContext>(provider => provider.GetService<ApplicationDbContext>());
 
             services.AddScoped<IDomainEventService, DomainEventService>();
 

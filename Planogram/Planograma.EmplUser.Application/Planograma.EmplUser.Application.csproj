@@ -18,6 +18,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Planograma.Authorization.Application\Planograma.Authorization.Application.csproj" />
+    <ProjectReference Include="..\Planograma.Authorization.Domain\Planograma.Authorization.Domain.csproj" />
     <ProjectReference Include="..\Planograma.EmplUser.Domain\Planograma.EmplUser.Domain.csproj" />
   </ItemGroup>
 

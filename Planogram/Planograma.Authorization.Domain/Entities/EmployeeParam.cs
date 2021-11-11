@@ -13,15 +13,21 @@ namespace Planograma.Authorization.Domain.Entities
 {
     public class EmployeeParams
     {
+        public EmployeeParams() {
+            RefreshTokens = new List<RefreshToken>();
+        }
+        public void addRefreshTokens(RefreshToken refreshToken) { RefreshTokens.Add(refreshToken); }
         [Key]
         public int EmployeeId { get; set; }
+        public string Username { get; set; }
+
+        [ForeignKey("EmployeeId")]
+        public Employee Employee { get; set; }
 
         [JsonIgnore]
         public string PasswordHash { get; set; }
 
         [NotMapped]
-        public Employee Employee { get; set; }
-        [JsonIgnore]
         public List<RefreshToken> RefreshTokens { get; set; }
     }
 }

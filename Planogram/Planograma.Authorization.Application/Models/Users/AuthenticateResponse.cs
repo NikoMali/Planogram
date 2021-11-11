@@ -1,6 +1,6 @@
 using System.Text.Json.Serialization;
 
-namespace Planograma.Authorization.Application.Models.Users
+namespace Planograma.EmplUser.Application.Models.Users
 {
     public class AuthenticateResponse
     {

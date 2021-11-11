@@ -21,7 +21,7 @@ namespace Planograma.EmplUser.Application.Helpers.Behaviours
             
         }
 
-        public async Task Process(TRequest request, CancellationToken cancellationToken)
+        public Task Process(TRequest request, CancellationToken cancellationToken)
         {
             var requestName = typeof(TRequest).Name;
             var userId = _currentUserService.UserId ?? string.Empty;
@@ -34,6 +34,7 @@ namespace Planograma.EmplUser.Application.Helpers.Behaviours
 
             Log.Information("CleanArchitecture Request: {Name} {@UserId} {@UserName} {@Request}",
                 requestName, userId, userName, request);
+            return Task.CompletedTask;
         }
     }
 }
