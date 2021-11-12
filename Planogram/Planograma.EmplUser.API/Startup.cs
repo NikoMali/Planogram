@@ -48,9 +48,9 @@ namespace Planograma.EmplUser.API
             services.AddHealthChecks()
                 .AddDbContextCheck<ApplicationDbContext>();
 
-            services.AddControllersWithViews(options =>
+            services.AddControllersWithViews(/*options =>
                 options.Filters.Add<ApiExceptionFilterAttribute>())
-                    .AddFluentValidation(x => x.AutomaticValidationEnabled = false);
+                    .AddFluentValidation(x => x.AutomaticValidationEnabled = false*/);
 
             services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
             settings = Configuration.GetSection("AppSettings").Get<AppSettings>();
@@ -61,6 +61,7 @@ namespace Planograma.EmplUser.API
             {
                 options.AddPolicy("RoleWithPermissions",
                   policy => policy
+                  //.RequireRole("Manager","Admin")
                     .Requirements
                     .Add(new RoleRequirement()));
             });

@@ -44,12 +44,15 @@ namespace Planograma.Authorization.Application.Services
         {
             var user = await _context.EmployeeParams.SingleOrDefaultAsync(x => x.Username == model.Username);
 
-             
-             if (user == null || !BCryptNet.Verify(model.Password, user.PasswordHash))
-                 throw new AppException("Username or password is incorrect");
+            var passwordVerify = BCryptNet.Verify(model.Password, user.PasswordHash);
+             if (user == null || !passwordVerify)
+            {
+                await AuthenticationInfoAccounting(user.EmployeeId, ipAddress, passwordVerify);
+                throw new AppException("Username or password is incorrect");
+            }
 
-           
-            
+            await AuthenticationInfoAccounting(user.EmployeeId,ipAddress, passwordVerify);
+
             var jwtToken =await _jwtUtils.GenerateJwtToken(user.EmployeeId);
             var refreshToken = await _jwtUtils.GenerateRefreshToken(ipAddress);
             user.addRefreshTokens(refreshToken);
@@ -59,7 +62,8 @@ namespace Planograma.Authorization.Application.Services
 
            
             _context.EmployeeParams.Update(user);
-            _context.SaveChanges();
+
+            await _context.SaveChangesAsync();
 
             return new AuthenticateResponse(user.EmployeeId, jwtToken, refreshToken.Token);
         }
@@ -74,7 +78,7 @@ namespace Planograma.Authorization.Application.Services
                 // revoke all descendant tokens in case this token has been compromised
                 revokeDescendantRefreshTokens(refreshToken, user, ipAddress, $"Attempted reuse of revoked ancestor token: {token}");
                 _context.EmployeeParams.Update(user);
-                _context.SaveChanges();
+                await _context.SaveChangesAsync(default);
             }
 
             if (!refreshToken.IsActive)
@@ -89,7 +93,7 @@ namespace Planograma.Authorization.Application.Services
 
             // save changes to db
             _context.EmployeeParams.Update(user);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync(default);
 
             // generate new jwt
             var jwtToken =await _jwtUtils.GenerateJwtToken(user.EmployeeId);
@@ -108,7 +112,7 @@ namespace Planograma.Authorization.Application.Services
             // revoke token and save
             revokeRefreshToken(refreshToken, ipAddress, "Revoked without replacement");
             _context.EmployeeParams.Update(user);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync(default);
         }
 
         public async Task<IEnumerable<EmployeeParams>> GetAll()
@@ -180,6 +184,78 @@ namespace Planograma.Authorization.Application.Services
             {
                 passwordHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
             }*/
+        }
+
+        private async Task AuthenticationInfoAccounting(int employeeId, string ipAddress,bool isSuccesLoggedIn)
+        {
+            var entity = new AuthenticationInfo();
+            if (await _context.AuthenticationInfos
+                .AnyAsync(x => x.EmployeeId == employeeId 
+                            && x.IsDelete == false 
+                            && x.IsBlockActive == true 
+                          )
+                )
+            {
+                throw new AppException("Account is blocked, Please Contact Admin");
+            }
+
+            var authInfos = await _context.AuthenticationInfos
+                .OrderByDescending(x => x.Id)
+                .Where(x => x.EmployeeId == employeeId && x.IsDelete == false && x.IsBlockIPAdressActive == true && x.IsBlockActive == false)
+                .ToListAsync();
+
+            if (authInfos.Count > 1)
+            {
+                entity.EmployeeId = employeeId;
+                entity.ConnectedIP = ipAddress;
+                entity.IsBlockActive = true;
+                entity.IsBlockIPAdressActive = true;
+                entity.ConnectedTime = DateTime.UtcNow;
+                entity.IsSuccesLoggedIn = false;
+            }
+            else
+            {
+
+
+                var authInfosByIP = await _context.AuthenticationInfos
+                    .Where(x=>x.EmployeeId == employeeId && x.ConnectedIP == ipAddress && x.IsDelete == false)
+                    .OrderByDescending(x=>x.Id)
+                    .Take(3)
+                    .ToListAsync();
+            
+                if (authInfosByIP.Count == 3 &&
+                    authInfosByIP.Where(x=>x.IsSuccesLoggedIn == false).Count() == 3)
+                {
+                    if (authInfosByIP.Any(x=> x.IsBlockIPAdressActive == true))
+                    {
+                        throw new AppException("Account is blocked, Please Contact Admin");
+                    }
+                    var timeDifference = authInfosByIP.First().ConnectedTime.Subtract(authInfosByIP.Last().ConnectedTime).TotalHours;
+                    if (timeDifference < 1)
+                    {
+                    
+                        entity.EmployeeId = employeeId;
+                        entity.ConnectedIP = ipAddress;
+                        entity.IsBlockActive = false;
+                        entity.IsBlockIPAdressActive = true;
+                        entity.ConnectedTime = DateTime.UtcNow;
+                        entity.IsSuccesLoggedIn = false;
+                    
+                    }
+                }
+                else
+                {
+                    entity.EmployeeId = employeeId;
+                    entity.ConnectedIP = ipAddress;
+                    entity.IsBlockActive = false;
+                    entity.IsBlockIPAdressActive = false;
+                    entity.ConnectedTime = DateTime.UtcNow;
+                    entity.IsSuccesLoggedIn = isSuccesLoggedIn;
+                }
+            }
+
+            await _context.AuthenticationInfos.AddAsync(entity);
+            await _context.SaveChangesAsync();
         }
     }
 }

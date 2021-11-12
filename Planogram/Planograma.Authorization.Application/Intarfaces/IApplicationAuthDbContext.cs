@@ -10,7 +10,10 @@ namespace Planograma.Authorization.Application.Interfaces
         DbSet<EmployeeParams> EmployeeParams { get; set; }
         DbSet<EmployeeRole> EmployeeRoles { get; set; }
         DbSet<Role> Roles { get; set; }
+        DbSet<AuthenticationInfo> AuthenticationInfos { get; set; }
 
-        public abstract void SaveChanges();
+        Task<int> SaveChangesAsync(CancellationToken cancellationToken);
+        Task<int> SaveChangesAsync();
+       
     }
 }

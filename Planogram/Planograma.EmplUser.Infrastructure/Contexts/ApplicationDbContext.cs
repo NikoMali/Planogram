@@ -41,16 +41,11 @@ namespace Planograma.EmplUser.Infrastructure.Contexts
         public DbSet<EmployeeParams> EmployeeParams { get; set; }
         public DbSet<EmployeeRole> EmployeeRoles { get; set; }
         public DbSet<Role> Roles { get; set; }
-
-#pragma warning disable CS0114 // Member hides inherited member; missing override keyword
-        public void SaveChanges()
-#pragma warning restore CS0114 // Member hides inherited member; missing override keyword
-        {
-            base.SaveChanges();
-        }
+        public DbSet<AuthenticationInfo> AuthenticationInfos { get; set; }
 
 
-        public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
+
+        public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {
             foreach (var entry in ChangeTracker.Entries<AuditableEntity>())
             {
@@ -69,6 +64,30 @@ namespace Planograma.EmplUser.Infrastructure.Contexts
             }
 
             var result = await base.SaveChangesAsync(cancellationToken);
+
+            await DispatchEvents();
+
+            return result;
+        }
+        public async Task<int> SaveChangesAsync()
+        {
+            foreach (var entry in ChangeTracker.Entries<AuditableEntity>())
+            {
+                switch (entry.State)
+                {
+                    case EntityState.Added:
+                        entry.Entity.CreatedBy = _currentUserService.UserId;
+                        entry.Entity.Created = _dateTime.Now;
+                        break;
+
+                    case EntityState.Modified:
+                        entry.Entity.LastModifiedBy = _currentUserService.UserId;
+                        entry.Entity.LastModified = _dateTime.Now;
+                        break;
+                }
+            }
+
+            var result = await base.SaveChangesAsync();
 
             await DispatchEvents();
 

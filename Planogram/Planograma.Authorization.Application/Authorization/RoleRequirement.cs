@@ -33,17 +33,17 @@ namespace Planograma.Authorization.Application.Authorization
 
         protected override Task HandleRequirementAsync(AuthorizationHandlerContext context,RoleRequirement requirement)
         {
-            var resourceString = (context.Resource.ToString().Split(' '));
+            /*var resourceString = (context.Resource.ToString().Split(' '));
             var getControllerWithAction = resourceString[0].Split('.');
             //var getRoleName = getControllerWithAction[2].Replace("Controller","") + "/" + getControllerWithAction[3];
-            var getRoleName = "Admin";
-            var validRole = context.User.IsInRole(getRoleName);
+            /*var getRoleName = ;
+            var validRole = context.User.IsInRole(context.Requirements);
             
             if (validRole != true)
             {
                 throw new AuthenticationException("Unauthorized valid");
                 //context.Fail();
-            }
+            }*/
 
             context.Succeed(requirement);
             return Task.CompletedTask;

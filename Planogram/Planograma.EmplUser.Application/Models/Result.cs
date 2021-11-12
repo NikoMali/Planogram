@@ -10,7 +10,11 @@ namespace Planograma.EmplUser.Application.Models
             Succeeded = succeeded;
             Errors = errors.ToArray();
         }
-
+        internal Result(bool succeeded)
+        {
+            Succeeded = succeeded;
+            Errors = new string[] { };
+        }
         public bool Succeeded { get; set; }
 
         public string[] Errors { get; set; }

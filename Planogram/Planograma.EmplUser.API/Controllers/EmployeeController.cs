@@ -5,6 +5,7 @@ using Planograma.Authorization.Application.Models.Users;
 using Planograma.Authorization.Application.Services;
 using Planograma.EmplUser.Application.Employees.Commands.CreateEmployee;
 using Planograma.EmplUser.Application.Employees.Commands.DeleteEmployee;
+using Planograma.EmplUser.Application.Employees.Commands.UnblockEmployee;
 using Planograma.EmplUser.Application.Employees.Commands.UpdateEmployee;
 using Planograma.EmplUser.Application.Employees.Queries.GetEmployee;
 using Planograma.EmplUser.Application.Employees.Queries.GetEmployees;
@@ -32,7 +33,12 @@ namespace Planograma.EmplUser.API.Controllers
             setTokenCookie(response.RefreshToken);
             return Ok(response);
         }
-        
+        [Authorize(Roles = "Admin")]
+        [HttpPost("unblock")]
+        public async Task<IActionResult> UnblockEmployee(UnblockEmployeeCommond command)
+        {
+            return Ok(await Mediator.Send(command));
+        }
 
         [HttpGet]
         public async Task<IActionResult> GetEmployee([FromQuery] GetEmployeesQuery query)
