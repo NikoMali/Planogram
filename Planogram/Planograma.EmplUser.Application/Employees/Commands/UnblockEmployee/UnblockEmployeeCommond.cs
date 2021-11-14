@@ -16,13 +16,13 @@ using System.Threading.Tasks;
 
 namespace Planograma.EmplUser.Application.Employees.Commands.UnblockEmployee
 {
-    public class UnblockEmployeeCommond : IRequest<Result>
+    public class UnblockEmployeeCommond : IRequest<UnblockEmployeeCommond>
     {
         public int EmployeeId { get; set; }
    
     }
 
-    public class UnblockEmployeeCommondHandler : IRequestHandler<UnblockEmployeeCommond, Result>
+    public class UnblockEmployeeCommondHandler : IRequestHandler<UnblockEmployeeCommond, UnblockEmployeeCommond>
     {
         private readonly IApplicationDbContext _context;
         private readonly IApplicationAuthDbContext _authContext;
@@ -39,7 +39,7 @@ namespace Planograma.EmplUser.Application.Employees.Commands.UnblockEmployee
             _userService = userService;
         }
 
-        public async Task<Result> Handle(UnblockEmployeeCommond request, CancellationToken cancellationToken)
+        public async Task<UnblockEmployeeCommond> Handle(UnblockEmployeeCommond request, CancellationToken cancellationToken)
         {
             var employeeAuth =await _authContext.AuthenticationInfos
                 .Where(x => x.EmployeeId == request.EmployeeId && x.IsDelete == false)
@@ -52,7 +52,7 @@ namespace Planograma.EmplUser.Application.Employees.Commands.UnblockEmployee
             _authContext.AuthenticationInfos.UpdateRange(employeeAuth);
             await _authContext.SaveChangesAsync();
 
-            return new Result(true);
+            return request;
         }
     }
 }

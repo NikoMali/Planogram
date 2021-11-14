@@ -3,12 +3,14 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Planograma.Authorization.Application.Models.Users;
 using Planograma.Authorization.Application.Services;
+using Planograma.EmplUser.API.Helpers;
 using Planograma.EmplUser.Application.Employees.Commands.CreateEmployee;
 using Planograma.EmplUser.Application.Employees.Commands.DeleteEmployee;
 using Planograma.EmplUser.Application.Employees.Commands.UnblockEmployee;
 using Planograma.EmplUser.Application.Employees.Commands.UpdateEmployee;
 using Planograma.EmplUser.Application.Employees.Queries.GetEmployee;
 using Planograma.EmplUser.Application.Employees.Queries.GetEmployees;
+using Planograma.EmplUser.Application.Models.Users;
 using Serilog;
 using System;
 using System.Threading.Tasks;
@@ -31,39 +33,47 @@ namespace Planograma.EmplUser.API.Controllers
         {
             var response =await _userService.Authenticate(model, ipAddress());
             setTokenCookie(response.RefreshToken);
-            return Ok(response);
+            return Ok(new GenericResponseWithData<AuthenticateResponse>(response,true));
         }
         [Authorize(Roles = "Admin")]
         [HttpPost("unblock")]
         public async Task<IActionResult> UnblockEmployee(UnblockEmployeeCommond command)
         {
-            return Ok(await Mediator.Send(command));
+            return Ok(
+                new GenericResponseWithData<UnblockEmployeeCommond>(
+                await Mediator.Send(command),true));
         }
 
         [HttpGet]
         public async Task<IActionResult> GetEmployee([FromQuery] GetEmployeesQuery query)
         {
-            Log.Error("Test Error");
-            return Ok(await Mediator.Send(query));
+            
+            return Ok(
+                new GenericResponseWithDataList<EmployeesResponse>(
+                await Mediator.Send(query)));
         }
 
         [HttpGet("{id}")]
         public async Task<ActionResult> GetEmployeeDetail(int id)
         {
-            return Ok(await Mediator.Send(new GetEmployeeQuery { Id = id }));
+            return Ok(
+                new GenericResponseWithData<EmployeeResponse>(
+                await Mediator.Send(new GetEmployeeQuery { Id = id })));
         }
         [AllowAnonymous]
         [HttpPost]
-        public async Task<ActionResult<int>> Create(CreateEmployeeCommond command)
+        public async Task<ActionResult> Create(CreateEmployeeCommond command)
         {
-            return await Mediator.Send(command);
+            return Ok(
+                new GenericResponseWithData<CreateEmployeeCommond>(
+                await Mediator.Send(command)));
         }
         [HttpDelete("{id}")]
         public async Task<ActionResult> Delete(int id)
         {
             await Mediator.Send(new DeleteEmployeeCommond { Id = id });
 
-            return NoContent();
+            return Ok(new GenericResponse(true));
         }
 
         [HttpPut("{id}")]
@@ -74,9 +84,12 @@ namespace Planograma.EmplUser.API.Controllers
                 return BadRequest();
             }
 
-            await Mediator.Send(command);
+            
 
-            return NoContent();
+            return Ok(
+                new GenericResponseWithData<UpdateEmployeeCommand>
+                (await Mediator.Send(command))
+                );
         }
 
 

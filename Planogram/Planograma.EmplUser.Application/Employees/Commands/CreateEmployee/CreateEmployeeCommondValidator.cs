@@ -19,7 +19,7 @@ namespace Planograma.EmplUser.Application.Employees.Commands.CreateEmployee
                 .MaximumLength(200)
                 .NotEmpty();
 
-            RuleFor(v => v.Username)
+            RuleFor(v => v.UserName)
                 .MaximumLength(200)
                 .NotEmpty();
 

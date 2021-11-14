@@ -19,9 +19,7 @@ namespace Planograma.EmplUser.Application.Employees.Commands.UpdateEmployee
                 .MaximumLength(200)
                 .NotEmpty();
 
-            RuleFor(v => v.Username)
-                .MaximumLength(200)
-                .NotEmpty();
+            
 
             RuleFor(v => v.password)
                 .MaximumLength(200)

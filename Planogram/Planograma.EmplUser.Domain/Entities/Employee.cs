@@ -12,6 +12,7 @@ namespace Planograma.EmplUser.Domain.Entities
 {
     public class Employee : AuditableEntity, IHasDomainEvent
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
         public string FirstName { get; set; }

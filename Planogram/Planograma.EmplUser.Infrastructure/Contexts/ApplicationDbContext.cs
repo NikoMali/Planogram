@@ -47,6 +47,7 @@ namespace Planograma.EmplUser.Infrastructure.Contexts
 
         public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {
+            
             foreach (var entry in ChangeTracker.Entries<AuditableEntity>())
             {
                 switch (entry.State)
@@ -67,6 +68,10 @@ namespace Planograma.EmplUser.Infrastructure.Contexts
 
             await DispatchEvents();
 
+            /*foreach (var entity in ChangeTracker.Entries())
+            {
+                entity.State = EntityState.Detached;
+            }*/
             return result;
         }
         public async Task<int> SaveChangesAsync()
@@ -88,6 +93,8 @@ namespace Planograma.EmplUser.Infrastructure.Contexts
             }
 
             var result = await base.SaveChangesAsync();
+
+            
 
             await DispatchEvents();
 

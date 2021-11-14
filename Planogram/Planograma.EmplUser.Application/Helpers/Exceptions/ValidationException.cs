@@ -21,6 +21,15 @@ namespace Planograma.EmplUser.Application.Helpers.Exceptions
                 .ToDictionary(failureGroup => failureGroup.Key, failureGroup => failureGroup.ToArray());
         }
 
+        public ValidationException(string message) : base(message) {
+            Errors = new Dictionary<string, string[]>()
+            {
+                {
+                    "Validation", new string[] {message}
+                }
+            };
+        }
+
         public IDictionary<string, string[]> Errors { get; }
     }
 }

@@ -65,7 +65,7 @@ namespace Planograma.Authorization.Application.Services
 
             await _context.SaveChangesAsync();
 
-            return new AuthenticateResponse(user.EmployeeId, jwtToken, refreshToken.Token);
+            return new AuthenticateResponse(user.EmployeeId,user.Username, jwtToken, refreshToken.Token);
         }
 
         public async Task<AuthenticateResponse> RefreshToken(string token, string ipAddress)
@@ -98,7 +98,7 @@ namespace Planograma.Authorization.Application.Services
             // generate new jwt
             var jwtToken =await _jwtUtils.GenerateJwtToken(user.EmployeeId);
 
-            return new AuthenticateResponse(user.EmployeeId, jwtToken, newRefreshToken.Token);
+            return new AuthenticateResponse(user.EmployeeId, user.Username,jwtToken, newRefreshToken.Token);
         }
 
         public async void RevokeToken(string token, string ipAddress)
