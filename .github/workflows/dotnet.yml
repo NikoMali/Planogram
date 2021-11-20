@@ -19,7 +19,7 @@ jobs:
       with:
         dotnet-version: 5.0.x
     - name: Build with dotnet
-      run: dotnet build Planogram.sln --configuration Release
+      run: dotnet build
 
     - name: dotnet publish
-      run: dotnet publish Planogram.sln -c Release -o ${{env.DOTNET_ROOT}}/myapp
+      run: dotnet publish
