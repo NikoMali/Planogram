@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
 using Planograma.Authorization.Application.Interfaces;
 using Planograma.Authorization.Domain.Entities;
+using Planograma.EmplUser.Infrastructure.Extensions;
 
 namespace Planograma.EmplUser.Infrastructure.Contexts
 {
@@ -42,6 +43,7 @@ namespace Planograma.EmplUser.Infrastructure.Contexts
         public DbSet<EmployeeRole> EmployeeRoles { get; set; }
         public DbSet<Role> Roles { get; set; }
         public DbSet<AuthenticationInfo> AuthenticationInfos { get; set; }
+        public DbSet<TestType> testTypes { get; set; }
 
 
 
@@ -104,6 +106,10 @@ namespace Planograma.EmplUser.Infrastructure.Contexts
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+
+            builder.Entity<TestType>().Property(e => e.Name).HasConversion<string>();
+
+            builder.Seed();
 
             base.OnModelCreating(builder);
         }

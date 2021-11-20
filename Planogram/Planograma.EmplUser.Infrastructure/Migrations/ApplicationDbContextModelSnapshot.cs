@@ -146,6 +146,50 @@ namespace Planograma.EmplUser.Infrastructure.Migrations
                     b.ToTable("Employees");
                 });
 
+            modelBuilder.Entity("Planograma.EmplUser.Domain.Entities.TestType", b =>
+                {
+                    b.Property<byte>("Id")
+                        .HasColumnType("tinyint unsigned");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("testTypes");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = (byte)1,
+                            IsActive = true,
+                            Name = "Test"
+                        },
+                        new
+                        {
+                            Id = (byte)2,
+                            IsActive = true,
+                            Name = "Test2"
+                        },
+                        new
+                        {
+                            Id = (byte)3,
+                            IsActive = true,
+                            Name = "Test3"
+                        },
+                        new
+                        {
+                            Id = (byte)4,
+                            IsActive = true,
+                            Name = "Test4"
+                        });
+                });
+
             modelBuilder.Entity("Planograma.Authorization.Domain.Entities.AuthenticationInfo", b =>
                 {
                     b.HasOne("Planograma.EmplUser.Domain.Entities.Employee", "Employee")

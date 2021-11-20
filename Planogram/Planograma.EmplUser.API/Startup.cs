@@ -3,9 +3,11 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Planograma.Authorization.Application;
@@ -13,6 +15,7 @@ using Planograma.Authorization.Application.Authorization;
 using Planograma.Authorization.Application.Helpers;
 using Planograma.Authorization.Application.Services;
 using Planograma.EmplUser.API.Filters;
+using Planograma.EmplUser.API.Helpers;
 using Planograma.EmplUser.API.Services;
 using Planograma.EmplUser.Application;
 using Planograma.EmplUser.Application.Interfaces;
@@ -20,6 +23,7 @@ using Planograma.EmplUser.Infrastructure;
 using Planograma.EmplUser.Infrastructure.Contexts;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -97,10 +101,44 @@ namespace Planograma.EmplUser.API
                     ValidateAudience = false
                 };
             });
-        
 
-        //swagger
-        services.AddSwaggerGen(c =>
+            //add localize language 
+            services.AddLocalization();
+            services.Configure<RequestLocalizationOptions>(options =>
+            {
+                var supportedCultures = new[]
+                {
+                    new CultureInfo("en-US"),
+                    new CultureInfo("ka-GE")
+                };
+                options.DefaultRequestCulture = new RequestCulture(culture: "ka-GE", uiCulture: "ka-GE");
+                options.SupportedCultures = supportedCultures;
+                options.SupportedUICultures = supportedCultures;
+                /*options.RequestCultureProviders = new List<IRequestCultureProvider>
+                {
+                    // Order is important, its in which order they will be evaluated
+                    new CookieRequestCultureProvider(),
+                    new QueryStringRequestCultureProvider()
+                };*/
+                //^^uncomment when unused accept-language
+                var defaultCookieRequestProvider =
+                    options.RequestCultureProviders.FirstOrDefault(rcp =>
+                        rcp.GetType() == typeof(CookieRequestCultureProvider));
+                if (defaultCookieRequestProvider != null)
+                    options.RequestCultureProviders.Remove(defaultCookieRequestProvider);
+
+                options.RequestCultureProviders.Insert(0,
+                    new CookieRequestCultureProvider()
+                    {
+                        CookieName = ".AspNetCore.Culture",
+                        Options = options
+                    });
+            });
+            ////////////////////////////////////////////////////////////////
+
+
+            //swagger
+            services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo
                 {
@@ -149,6 +187,10 @@ namespace Planograma.EmplUser.API
             app.UseAuthentication();
             app.UseAuthorization();
 
+            //AcceptLanguage and Control request localize
+            app.UseMiddleware<AcceptLanguageHttpHeader>();
+            var options = app.ApplicationServices.GetService<IOptions<RequestLocalizationOptions>>();
+            app.UseRequestLocalization(options.Value);
             /*// global cors policy
             app.UseCors(x => x
                 .SetIsOriginAllowed(origin => true)

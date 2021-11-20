@@ -11,6 +11,8 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Planograma.EmplUser.Application.Models.Users;
 using Planograma.Authorization.Application.Interfaces;
+using Microsoft.Extensions.Localization;
+using Planograma.Authorization.Application.Localize;
 
 namespace Planograma.Authorization.Application.Services
 {
@@ -29,15 +31,18 @@ namespace Planograma.Authorization.Application.Services
         private IApplicationAuthDbContext _context;
         private IJwtUtils _jwtUtils;
         private readonly AppSettings _appSettings;
+        private readonly IStringLocalizer<Resource> _localizer;
 
         public AuthService(
             IApplicationAuthDbContext context,
             IJwtUtils jwtUtils,
-            IOptions<AppSettings> appSettings)
+            IOptions<AppSettings> appSettings,
+            IStringLocalizer<Resource> localizer)
         {
             _context = context;
             _jwtUtils = jwtUtils;
             _appSettings = appSettings.Value;
+            _localizer = localizer;
         }
 
         public async Task<AuthenticateResponse> Authenticate(AuthenticateRequest model, string ipAddress)
@@ -48,7 +53,7 @@ namespace Planograma.Authorization.Application.Services
              if (user == null || !passwordVerify)
             {
                 await AuthenticationInfoAccounting(user.EmployeeId, ipAddress, passwordVerify);
-                throw new AppException("Username or password is incorrect");
+                throw new AppException(_localizer["UserNameOrPasswordIncorect"]);
             }
 
             await AuthenticationInfoAccounting(user.EmployeeId,ipAddress, passwordVerify);

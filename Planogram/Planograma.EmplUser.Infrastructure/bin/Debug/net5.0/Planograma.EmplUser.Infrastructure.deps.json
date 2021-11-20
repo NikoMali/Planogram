@@ -1732,6 +1732,14 @@
         },
         "runtime": {
           "Planograma.Authorization.Application.dll": {}
+        },
+        "resources": {
+          "en-US/Planograma.Authorization.Application.resources.dll": {
+            "locale": "en-US"
+          },
+          "ka-GE/Planograma.Authorization.Application.resources.dll": {
+            "locale": "ka-GE"
+          }
         }
       },
       "Planograma.Authorization.Domain/1.0.0": {
@@ -1761,6 +1769,14 @@
         },
         "runtime": {
           "Planograma.EmplUser.Application.dll": {}
+        },
+        "resources": {
+          "en-US/Planograma.EmplUser.Application.resources.dll": {
+            "locale": "en-US"
+          },
+          "ka-GE/Planograma.EmplUser.Application.resources.dll": {
+            "locale": "ka-GE"
+          }
         }
       },
       "Planograma.EmplUser.Domain/1.0.0": {

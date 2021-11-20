@@ -94,3 +94,7 @@ C:\Users\Niko\Desktop\Planogram\Planogram\Planograma.EmplUser.API\bin\Debug\net5
 C:\Users\Niko\Desktop\Planogram\Planogram\Planograma.EmplUser.API\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Users\Niko\Desktop\Planogram\Planogram\Planograma.EmplUser.API\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.dll
 C:\Users\Niko\Desktop\Planogram\Planogram\Planograma.EmplUser.API\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\Niko\Desktop\Planogram\Planogram\Planograma.EmplUser.API\bin\Debug\net5.0\en-US\Planograma.EmplUser.Application.resources.dll
+C:\Users\Niko\Desktop\Planogram\Planogram\Planograma.EmplUser.API\bin\Debug\net5.0\ka-GE\Planograma.EmplUser.Application.resources.dll
+C:\Users\Niko\Desktop\Planogram\Planogram\Planograma.EmplUser.API\bin\Debug\net5.0\en-US\Planograma.Authorization.Application.resources.dll
+C:\Users\Niko\Desktop\Planogram\Planogram\Planograma.EmplUser.API\bin\Debug\net5.0\ka-GE\Planograma.Authorization.Application.resources.dll

@@ -15,3 +15,10 @@ C:\Users\Niko\Desktop\Planogram\Planogram\Planograma.Authorization.Application\o
 C:\Users\Niko\Desktop\Planogram\Planogram\Planograma.Authorization.Application\obj\Debug\net5.0\Planograma.Authorization.Application.dll
 C:\Users\Niko\Desktop\Planogram\Planogram\Planograma.Authorization.Application\obj\Debug\net5.0\ref\Planograma.Authorization.Application.dll
 C:\Users\Niko\Desktop\Planogram\Planogram\Planograma.Authorization.Application\obj\Debug\net5.0\Planograma.Authorization.Application.pdb
+C:\Users\Niko\Desktop\Planogram\Planogram\Planograma.Authorization.Application\bin\Debug\net5.0\en-US\Planograma.Authorization.Application.resources.dll
+C:\Users\Niko\Desktop\Planogram\Planogram\Planograma.Authorization.Application\bin\Debug\net5.0\ka-GE\Planograma.Authorization.Application.resources.dll
+C:\Users\Niko\Desktop\Planogram\Planogram\Planograma.Authorization.Application\obj\Debug\net5.0\Planograma.Authorization.Application.Localize.Resource.en-US.resources
+C:\Users\Niko\Desktop\Planogram\Planogram\Planograma.Authorization.Application\obj\Debug\net5.0\Planograma.Authorization.Application.Localize.Resource.ka-GE.resources
+C:\Users\Niko\Desktop\Planogram\Planogram\Planograma.Authorization.Application\obj\Debug\net5.0\Planograma.Authorization.Application.csproj.GenerateResource.cache
+C:\Users\Niko\Desktop\Planogram\Planogram\Planograma.Authorization.Application\obj\Debug\net5.0\en-US\Planograma.Authorization.Application.resources.dll
+C:\Users\Niko\Desktop\Planogram\Planogram\Planograma.Authorization.Application\obj\Debug\net5.0\ka-GE\Planograma.Authorization.Application.resources.dll

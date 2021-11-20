@@ -17,3 +17,12 @@ C:\Users\Niko\Desktop\Planogram\Planogram\Planograma.EmplUser.Application\bin\De
 C:\Users\Niko\Desktop\Planogram\Planogram\Planograma.EmplUser.Application\bin\Debug\net5.0\Planograma.Authorization.Domain.pdb
 C:\Users\Niko\Desktop\Planogram\Planogram\Planograma.EmplUser.Application\bin\Debug\net5.0\Planograma.Authorization.Application.dll
 C:\Users\Niko\Desktop\Planogram\Planogram\Planograma.EmplUser.Application\bin\Debug\net5.0\Planograma.Authorization.Application.pdb
+C:\Users\Niko\Desktop\Planogram\Planogram\Planograma.EmplUser.Application\bin\Debug\net5.0\en-US\Planograma.EmplUser.Application.resources.dll
+C:\Users\Niko\Desktop\Planogram\Planogram\Planograma.EmplUser.Application\bin\Debug\net5.0\ka-GE\Planograma.EmplUser.Application.resources.dll
+C:\Users\Niko\Desktop\Planogram\Planogram\Planograma.EmplUser.Application\bin\Debug\net5.0\en-US\Planograma.Authorization.Application.resources.dll
+C:\Users\Niko\Desktop\Planogram\Planogram\Planograma.EmplUser.Application\bin\Debug\net5.0\ka-GE\Planograma.Authorization.Application.resources.dll
+C:\Users\Niko\Desktop\Planogram\Planogram\Planograma.EmplUser.Application\obj\Debug\net5.0\Planograma.EmplUser.Application.Localize.Resource.en-US.resources
+C:\Users\Niko\Desktop\Planogram\Planogram\Planograma.EmplUser.Application\obj\Debug\net5.0\Planograma.EmplUser.Application.Localize.Resource.ka-GE.resources
+C:\Users\Niko\Desktop\Planogram\Planogram\Planograma.EmplUser.Application\obj\Debug\net5.0\Planograma.EmplUser.Application.csproj.GenerateResource.cache
+C:\Users\Niko\Desktop\Planogram\Planogram\Planograma.EmplUser.Application\obj\Debug\net5.0\en-US\Planograma.EmplUser.Application.resources.dll
+C:\Users\Niko\Desktop\Planogram\Planogram\Planograma.EmplUser.Application\obj\Debug\net5.0\ka-GE\Planograma.EmplUser.Application.resources.dll
